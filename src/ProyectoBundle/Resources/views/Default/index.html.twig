@@ -1,3 +1,4 @@
+{% extends "base.html.twig" %}
 <!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
@@ -45,18 +46,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="clear"></div>
 				</div>
 		</div>
-		<div class="menu">
-			<div class="top-nav">
-					<ul>
-						<li class="active"><a href="">Inicio</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="vehiculos">Vehículos</a></li>
-						<li><a href="personal">Personal</a></li>
-						<li><a href="contact.html">Contáctanos</a></li>
-					</ul>
-					<div class="clear"></div>
-				</div>
-		</div>
+		{% block menu %}{% endblock %}
 		<div class="banner-top">
 			<div class="header-bottom">
 				 <div class="header_bottom_right_images">
