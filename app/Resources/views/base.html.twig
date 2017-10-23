@@ -60,7 +60,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   {% set routeSelected = app.request.attributes.get('_route') %}
                   <li class="{% if routeSelected == 'index' %}active{% endif %}"><a href="/">Inicio</a></li>
                   <li class="{% if routeSelected == 'vehiculos' %}active{% endif %}"><a href="vehiculos">Vehículos</a></li>
-                  <li><a href="new.html">New</a></li>
+                  <li class="{% if routeSelected == 'personal' %}active{% endif %}"><a href="personal">Área del usuario</a></li>
                   <li><a href="contact.html">Contáctanos</a></li>
                 </ul>
                 <div class="clear"></div>
