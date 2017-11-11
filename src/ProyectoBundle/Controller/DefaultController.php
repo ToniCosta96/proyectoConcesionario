@@ -5,6 +5,8 @@ namespace ProyectoBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+use ProyectoBundle\Entity\Vehiculo;
+
 class DefaultController extends Controller
 {
     /**
@@ -20,7 +22,19 @@ class DefaultController extends Controller
      */
     public function vehiculosAction()
     {
-        return $this->render('ProyectoBundle:Default:vehiculos.html.twig');
+        $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
+        $vehiculos = $repository->findAll();
+        return $this->render('ProyectoBundle:Default:vehiculos.html.twig',array('vehiculos'=>$vehiculos));
+    }
+
+    /**
+     * @Route("/vehiculo/id={id}", name="vehiculo_id", requirements={"id": "\d+"})
+     */
+    public function vehiculoAction($id)
+    {
+        $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
+        $vehiculo = $repository->find($id);
+        return $this->render('ProyectoBundle:Default:vehiculo.html.twig',array('vehiculo'=>$vehiculo));
     }
 
     /**

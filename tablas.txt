@@ -1,0 +1,16 @@
+
+--Tabla vehiculos--------
+Id - int
+Nombre - varchar(255) NOT NULL
+Descripcion - varchar(800)
+Descripcion_corta - varchar(255)
+Imagen - varchar(255)
+Precio - decimal(10,2)
+Fecha_adquisicion - date NOT NULL
+En_venta - boolean NOT NULL
+Detalles - varchar(800)
+Kilometros - int
+
+--Sentencia para insertar dos vehiculos--------
+
+INSERT INTO `vehiculo` (`id`, `nombre`, `descripcion_corta`, `descripcion`, `imagen`, `precio`, `fecha_adquisicion`, `en_venta`, `detalles`, `kilometros`) VALUES (NULL, 'Vehiculo1', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit', 'images/pic12.jpg', '20000', '2017-11-11', '1', '', '100000'), (NULL, 'Vehiculo2', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit', 'images/pic13.jpg', '22000', '2017-11-02', '1', '', '80000');
