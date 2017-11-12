@@ -13,4 +13,11 @@ Kilometros - int
 
 --Sentencia para insertar dos vehiculos--------
 
-INSERT INTO `vehiculo` (`id`, `nombre`, `descripcion_corta`, `descripcion`, `imagen`, `precio`, `fecha_adquisicion`, `en_venta`, `detalles`, `kilometros`) VALUES (NULL, 'Vehiculo1', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit', 'images/pic12.jpg', '20000', '2017-11-11', '1', '', '100000'), (NULL, 'Vehiculo2', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit', 'images/pic13.jpg', '22000', '2017-11-02', '1', '', '80000');
+INSERT INTO `vehiculo` (`id`, `nombre`, `descripcion_corta`, `descripcion`, `imagen`, `precio`, `fecha_adquisicion`, `en_venta`, `detalles`, `kilometros`)
+VALUES
+(NULL, 'Vehiculo1', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit', 'images/pic12.jpg', '20000', '2017-03-4', '1', '', '100000'),
+(NULL, 'Vehiculo2', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit', 'images/pic13.jpg', '22000', '2017-04-15', '1', '', '80000'),
+(NULL, 'Vehiculo3', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit', 'images/pic14.jpg', '30000', '2017-04-10', '1', '', '70000'),
+(NULL, 'Vehiculo4', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit', 'images/pic15.jpg', '37000', '2017-05-20', '1', '', '150000'),
+(NULL, 'Vehiculo5', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit', 'images/pic16.jpg', '14000', '2017-08-02', '1', '', '200000'),
+(NULL, 'Vehiculo6', 'Lorem ipsum dolor sitconsectetuer adipiscing elit', 'Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit Lorem ipsum dolor sitconsectetuer adipiscing elitLorem ipsum dolor sitconsectetuer adipiscing elit ', 'images/pic17.jpg', '25000', '2017-11-11', '1', '', '80000');

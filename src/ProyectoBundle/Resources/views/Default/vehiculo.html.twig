@@ -3,6 +3,11 @@
 {% block title %}{{vehiculo.nombre}} - Concesionario{% endblock %}
 
 {% block body01 %}
-<h1>{{vehiculo.nombre}}</h1>
+<img class="img_vehiculo" src="{{asset(vehiculo.imagen)}}" alt="Imagen del vehículo">
+<h1 class="h1_vehiculo">{{vehiculo.nombre}}</h1>
 <p>{{vehiculo.descripcion}}</p>
+<h3 class="h3_vehiculo">Características</h3>
+<p>{{vehiculo.detalles}}</p>
+<p class="p_vehiculo">{{vehiculo.kilometros|number_format(0, ',', '.')}} km</p>
+
 {% endblock %}
