@@ -55,7 +55,7 @@
                 <ul>
                   {% set routeSelected = app.request.attributes.get('_route') %}
                   <li class="{% if routeSelected == 'index' %}active{% endif %}"><a href="/">Inicio</a></li>
-                  <li class="{% if routeSelected == 'vehiculos' %}active{% endif %}"><a href="/vehiculos">Vehículos</a></li>
+                  <li class="{% if routeSelected == 'vehiculos' %}active{% endif %}"><a href="/vehiculos/page=1">Vehículos</a></li>
                   <li class="{% if routeSelected == 'personal' %}active{% endif %}"><a href="/personal">Área del usuario</a></li>
                   <li class="{% if routeSelected == 'contacto' %}active{% endif %}"><a href="/contacto">Contáctanos</a></li>
                 </ul>

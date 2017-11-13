@@ -16,7 +16,7 @@
           {% for vehiculo in vehiculos %}
           <div class="grid_1_of_3 images_1_of_3">
             <div class="grid_1">
-              <a href="/vehiculo/id={{vehiculo.id}}"><img src="{{vehiculo.imagen}}" title="continue reading" alt=""></a>
+              <a href="/vehiculo/id={{vehiculo.id}}"><img src="{{asset(vehiculo.imagen)}}" title="continue reading" alt=""></a>
               <div class="grid_desc">
                 <p class="title">{{vehiculo.nombre}}</p>
                 <p class="descripcion_corta">{{vehiculo.descripcionCorta}}</p>
@@ -127,14 +127,14 @@
     </div>
     <div class="paging">
       <ul>
-        <li><a href="#" target="_parent">Previous</a></li>
-        <li><a href="#" target="_parent">1</a></li>
-        <li><a href="#" target="_parent">2</a></li>
-        <li><a href="#" target="_parent">3</a></li>
-        <li><a href="#" target="_parent">4</a></li>
-        <li><a href="#" target="_parent">5</a></li>
-        <li><a href="#" target="_parent">6</a></li>
-        <li><a href="#" target="_parent">Next</a></li>
+        {% if pagina > 1 %}<li><a href="/{{app.request.attributes.get('_route')}}/page={{pagina-1}}" target="_parent">Previous</a></li>{% endif %}
+        <li><a href="/{{app.request.attributes.get('_route')}}/page=1" target="_parent">1</a></li>
+        <li><a href="/{{app.request.attributes.get('_route')}}/page=2" target="_parent">2</a></li>
+        <li><a href="/{{app.request.attributes.get('_route')}}/page=3" target="_parent">3</a></li>
+        <li><a href="/{{app.request.attributes.get('_route')}}/page=4" target="_parent">4</a></li>
+        <li><a href="/{{app.request.attributes.get('_route')}}/page=5" target="_parent">5</a></li>
+        <li><a href="/{{app.request.attributes.get('_route')}}/page=6" target="_parent">6</a></li>
+        <li><a href="/{{app.request.attributes.get('_route')}}/page={{pagina+1}}" target="_parent">Next</a></li>
       </ul>
     </div>
   </div>

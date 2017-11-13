@@ -2,6 +2,7 @@
 
 namespace ProyectoBundle\Repository;
 
+
 /**
  * VehiculoRepository
  *
@@ -10,4 +11,21 @@ namespace ProyectoBundle\Repository;
  */
 class VehiculoRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+    * Devuelve los vehiculos para una página en concreto
+    *
+    *
+    * @param integer $currentPage The current page (passed from controller)
+    * @param integer $numResultados El número de vehiculos que se devuelven por cada página
+    *
+    * @return
+    */
+    public function getVehiculos($currentPage, $numResultados)
+    {
+      return $this->getEntityManager()
+        ->createQuery('SELECT v FROM ProyectoBundle:vehiculo v ORDER BY v.fechaAdquisicion ASC')
+        ->setFirstResult(($currentPage-1)*$numResultados)
+        ->setMaxResults($numResultados)
+        ->getResult();
+    }
 }

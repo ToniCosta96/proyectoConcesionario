@@ -18,13 +18,13 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/vehiculos", name="vehiculos")
+     * @Route("/vehiculos/page={page}", name="vehiculos")
      */
-    public function vehiculosAction()
+    public function vehiculosAction($page)
     {
         $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
-        $vehiculos = $repository->findAll();
-        return $this->render('ProyectoBundle:Default:vehiculos.html.twig',array('vehiculos'=>$vehiculos));
+        $vehiculos = $repository->getVehiculos($page,6);
+        return $this->render('ProyectoBundle:Default:vehiculos.html.twig',array('vehiculos'=>$vehiculos, 'pagina'=>$page));
     }
 
     /**
