@@ -28,16 +28,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/vehiculo/id={id}", name="vehiculo_id", requirements={"id": "\d+"})
-     */
-    public function vehiculoAction($id)
-    {
-        $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
-        $vehiculo = $repository->find($id);
-        return $this->render('ProyectoBundle:Default:vehiculo.html.twig',array('vehiculo'=>$vehiculo));
-    }
-
-    /**
      * @Route("/registro", name="registro")
      */
     public function registroAction()

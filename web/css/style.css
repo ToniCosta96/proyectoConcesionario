@@ -394,10 +394,10 @@ span.actual {
 .grid_1_of_3{
 	display: block;
 	float:left;
-	margin: 1% 0 1% 1.6%;
+	margin: 1% 0 1% 0.5%;
 }
 .grid_1_of_3:first-child {
-	margin-left: 0;
+	/*margin-left: 0;*/
 }
 .images_1_of_3 {
 	width: 32.2%;
@@ -464,6 +464,7 @@ span.actual {
 }
 .text{
 	margin-top:7px;
+	float:hidden;
 }
 /*--Footer--*/
 .footer-bottom {

@@ -21,7 +21,7 @@
                 <p class="title">{{vehiculo.nombre}}</p>
                 <p class="descripcion_corta">{{vehiculo.descripcionCorta}}</p>
                 <div class="price" style="height: 19px;">
-                  <span class="reducedfrom">{{vehiculo.precio}}€</span>
+                  <span class="reducedfrom">{{vehiculo.precio|number_format(2, ',', '.')}}€</span>
                   <span class="actual"></span>
                 </div>
                 <div class="cart-button">
