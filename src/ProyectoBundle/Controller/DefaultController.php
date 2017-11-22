@@ -28,6 +28,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/vehiculoNombre/{nombre}", name="vehiculo_nombre")
+     */
+    public function vehiculoNombreAction($nombre = "Vehiculo1")
+    {
+        $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
+        $vehiculos = $repository->findByNombre($nombre);
+        return $this->render('ProyectoBundle:Default:vehiculos.html.twig',array('vehiculos'=>$vehiculos, 'pagina'=>1));
+    }
+
+    /**
      * @Route("/registro", name="registro")
      */
     public function registroAction()

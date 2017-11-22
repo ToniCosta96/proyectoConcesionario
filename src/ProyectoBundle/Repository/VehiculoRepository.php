@@ -28,4 +28,19 @@ class VehiculoRepository extends \Doctrine\ORM\EntityRepository
         ->setMaxResults($numResultados)
         ->getResult();
     }
+
+    /**
+    * Devuelve los vehiculos que tengan menos de los kilómetros dados
+    *
+    *
+    * @param integer $maxKilometros Cantidad máxima de kilómetros
+    *
+    * @return
+    */
+    public function getVehiculosKilometros($maxKilometros)
+    {
+      return $this->getEntityManager()
+        ->createQuery('SELECT v FROM ProyectoBundle:vehiculo v WHERE v.kilometros<$maxKilometros ORDER BY v.fechaAdquisicion ASC')
+        ->getResult();
+    }
 }
