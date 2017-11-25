@@ -11,6 +11,18 @@ En_venta - boolean NOT NULL
 Detalles - varchar(800)
 Kilometros - int
 
+--Tabla usuarios--------
+Id - int
+Administrador - boolean
+Nombre - varchar(50)
+Apellidos - varchar(255)
+Vehiculos_usuario_id - int
+
+--Tabla usuarios_vehiculos--------
+Id_usuario - int
+Id_vehiculo - int
+Fecha_compra - date
+
 --Sentencia para insertar dos vehiculos--------
 
 INSERT INTO `vehiculo` (`id`, `nombre`, `descripcion_corta`, `descripcion`, `imagen`, `precio`, `fecha_adquisicion`, `en_venta`, `detalles`, `kilometros`)
