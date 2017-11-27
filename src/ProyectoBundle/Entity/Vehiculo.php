@@ -64,13 +64,6 @@ class Vehiculo
     private $fechaAdquisicion;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="en_venta", type="boolean")
-     */
-    private $enVenta;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="detalles", type="string", length=800)
@@ -83,6 +76,19 @@ class Vehiculo
      * @ORM\Column(name="kilometros", type="integer")
      */
     private $kilometros;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="en_venta", type="boolean")
+     */
+    private $enVenta;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="products")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     */
+    private $usuarioId;
 
 
     /**
@@ -310,5 +316,28 @@ class Vehiculo
     {
         return $this->kilometros;
     }
-}
 
+    /**
+     * Set usuarioId
+     *
+     * @param integer $usuarioId
+     *
+     * @return Vehiculo
+     */
+    public function setUsuarioId($usuarioId)
+    {
+        $this->usuarioId = $usuarioId;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarioId
+     *
+     * @return integer
+     */
+    public function getUsuarioId()
+    {
+        return $this->usuarioId;
+    }
+}

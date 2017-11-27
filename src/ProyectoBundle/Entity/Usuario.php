@@ -22,6 +22,11 @@ class Usuario
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Vehiculo", mappedBy="usuarioId")
+     */
+    private $products;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="administrador", type="boolean")
@@ -41,14 +46,6 @@ class Usuario
      * @ORM\Column(name="apellidos", type="string", length=255)
      */
     private $apellidos;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="vehiculos_usuario_id", type="integer")
-     */
-    private $vehiculosUsuarioId;
-
 
     /**
      * Get id
@@ -131,29 +128,4 @@ class Usuario
     {
         return $this->apellidos;
     }
-
-    /**
-     * Set vehiculosUsuarioId
-     *
-     * @param integer $vehiculosUsuarioId
-     *
-     * @return Usuario
-     */
-    public function setVehiculosUsuarioId($vehiculosUsuarioId)
-    {
-        $this->vehiculosUsuarioId = $vehiculosUsuarioId;
-
-        return $this;
-    }
-
-    /**
-     * Get vehiculosUsuarioId
-     *
-     * @return int
-     */
-    public function getVehiculosUsuarioId()
-    {
-        return $this->vehiculosUsuarioId;
-    }
 }
-

@@ -7,21 +7,16 @@ Descripcion_corta - varchar(255)
 Imagen - varchar(255)
 Precio - decimal(10,2)
 Fecha_adquisicion - date NOT NULL
-En_venta - boolean NOT NULL
 Detalles - varchar(800)
 Kilometros - int
+En_venta - boolean NOT NULL
+Usuario_id - int NULL
 
 --Tabla usuarios--------
 Id - int
 Administrador - boolean
 Nombre - varchar(50)
 Apellidos - varchar(255)
-Vehiculos_usuario_id - int
-
---Tabla usuarios_vehiculos--------
-Id_usuario - int
-Id_vehiculo - int
-Fecha_compra - date
 
 --Sentencia para insertar dos vehiculos--------
 
