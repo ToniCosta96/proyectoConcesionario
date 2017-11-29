@@ -29,24 +29,18 @@ class VehiculoController extends Controller
         $vehiculo = new Vehiculo();
 
         $form = $this->createForm(VehiculoType::class, $vehiculo);
-        //$form->add('save', SubmitType::class, array('label' => 'Crear cerveza'));
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
           // $form->getData() holds the submitted values
           // but, the original `$vehiculo` variable has also been updated
           $vehiculo = $form->getData();
-
-
-          // ... perform some action, such as saving the task to the database
-          // for example, if Task is a Doctrine entity, save it!
+          // Guardar vehiculo
           $em = $this->getDoctrine()->getManager();
           $em->persist($vehiculo);
           $em->flush();
-          $idVehiculo = $vehiculo->getId();
 
-          return $this->redirectToRoute('vehiculo_id', array('entity' => $idVehiculo));
+          return $this->redirectToRoute('vehiculo_id', array('id' => $vehiculo->getId()));
         }
         return $this->render('ProyectoBundle:Vehiculo:crearVehiculo.html.twig',array('form' => $form->createView()));
     }
