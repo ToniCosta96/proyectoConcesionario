@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Añadir vehículo - Concesionario{% endblock %}
+
+{% block body01 %}
+<h1 class="h1_vehiculo">Añadir vehiculo</h1>
+<p>Añadir vehiculo a la base de datos</p>
+<br>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock %}
