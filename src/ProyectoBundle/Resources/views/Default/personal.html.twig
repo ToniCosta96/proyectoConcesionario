@@ -4,6 +4,15 @@
 
 {% block body01 %}
 <h1 class="h1_vehiculo">Área del usuario</h1>
-<p><a href="{{asset("/registro")}}">Crear usuario</a></p>
-<p><a href="{{asset("/crearVehiculo")}}">Añadir vehiculo</a></p>
+<p class="p_normal"><a class="enlaceNormal" href="{{asset("/registro")}}">Crear usuario</a></p>
+<p class="p_normal"><a class="enlaceNormal" href="{{asset("/crearVehiculo")}}">Añadir vehiculo</a></p>
+<h3 class="h3_vehiculo">Lista de vehículos:</h3>
+<ul>
+  {% for vehiculo in vehiculos %}
+    <li class="elementoLista">
+      {{vehiculo.nombre}}<a class="enlaceLista" href="{{asset("/modificarVehiculo/id="~vehiculo.id)}}">Modificar</a>
+      <a class="enlaceLista" href="{{asset("/eliminarVehiculo/id="~vehiculo.id)}}">Eliminar</a>
+    </li>
+  {% endfor %}
+</ul>
 {% endblock %}

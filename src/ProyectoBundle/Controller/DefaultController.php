@@ -24,7 +24,7 @@ class DefaultController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
         $vehiculos = $repository->getVehiculos($page,6);
-        return $this->render('ProyectoBundle:Default:vehiculos.html.twig',array('vehiculos'=>$vehiculos, 'pagina'=>$page));
+        return $this->render('ProyectoBundle:Default:vehiculos.html.twig', array('vehiculos'=>$vehiculos, 'pagina'=>$page));
     }
 
     /**
@@ -48,6 +48,8 @@ class DefaultController extends Controller
      */
     public function personalAction()
     {
-        return $this->render('ProyectoBundle:Default:personal.html.twig');
+        $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
+        $vehiculos = $repository->findAll();
+        return $this->render('ProyectoBundle:Default:personal.html.twig', array('vehiculos'=>$vehiculos));
     }
 }

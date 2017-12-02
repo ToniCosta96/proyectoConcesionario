@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modificar vehículo - Concesionario{% endblock %}
+
+{% block body01 %}
+<h1 class="h1_vehiculo">Modificar vehiculo</h1>
+<p>Modificar vehiculo {{vehiculo.nombre}}</p>
+<p><strong>Id: </strong> {{vehiculo.id}}</p>
+<br>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock %}

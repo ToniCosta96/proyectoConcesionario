@@ -21,7 +21,7 @@
 .img_vehiculo{
   float: right;
 }
-
+/*p*/
 .p_vehiculo{
   display: block;
   margin-top: 1em;
@@ -32,4 +32,25 @@
 
 .p_vehiculo strong{
   font-weight: bold;
+}
+
+.p_normal{
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.elementoLista{
+  padding: 1px 0 1px 0;
+}
+
+.enlaceNormal{
+  text-decoration: underline;
+}
+
+li .enlaceLista{
+  padding: 0 10px 0 10px;
+  text-decoration: underline;
 }
