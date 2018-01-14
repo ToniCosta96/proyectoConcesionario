@@ -1,3 +1,8 @@
+cliente:
+    resource: "@ClienteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 proyecto:
     resource: "@ProyectoBundle/Controller/"
     type:     annotation
