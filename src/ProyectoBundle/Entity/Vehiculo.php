@@ -84,12 +84,6 @@ class Vehiculo
      */
     private $enVenta;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="products")
-     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
-     */
-    private $usuarioId;
-
 
     /**
      * Get id

@@ -28,22 +28,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/registro", name="registro")
-     */
-    public function registroAction()
-    {
-        return $this->render('ProyectoBundle:Default:registro.html.twig');
-    }
-
-    /**
-     * @Route("/login", name="login")
-     */
-    public function loginAction()
-    {
-        return $this->render('ProyectoBundle:Default:login.html.twig');
-    }
-
-    /**
      * @Route("/personal", name="personal")
      */
     public function personalAction()
