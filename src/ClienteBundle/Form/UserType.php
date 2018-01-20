@@ -13,23 +13,23 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
-class ClienteType extends AbstractType
+class UserType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-        ->add('username', TextType::class)
-        ->add('email', EmailType::class)
-        ->add('plainPassword', RepeatedType::class, array(
-                'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Contraseña'),
-                'second_options' => array('label' => 'Repite la contraseña'),
-            ))
-        ->add('Guardar', SubmitType::class)
-        ->add('Borrar campos', ResetType::class);
+      $builder
+      ->add('username', TextType::class)
+      ->add('email', EmailType::class)
+      ->add('plainPassword', RepeatedType::class, array(
+              'type' => PasswordType::class,
+              'first_options'  => array('label' => 'Contraseña'),
+              'second_options' => array('label' => 'Repite la contraseña'),
+          ))
+      ->add('guardar', SubmitType::class)
+      ->add('borrar', ResetType::class);
     }
 
     /**
@@ -38,7 +38,7 @@ class ClienteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ClienteBundle\Entity\Cliente'
+            'data_class' => 'ClienteBundle\Entity\User'
         ));
     }
 
@@ -47,7 +47,7 @@ class ClienteType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'clientebundle_cliente';
+        return 'clientebundle_user';
     }
 
 

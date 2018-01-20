@@ -7,12 +7,18 @@
 <p class="p_normal"><a class="enlaceNormal" href="{{asset("/registro")}}">Crear usuario</a></p>
 <p class="p_normal"><a class="enlaceNormal" href="{{asset("/crearVehiculo")}}">Añadir vehiculo</a></p>
 <h3 class="h3_vehiculo">Lista de vehículos:</h3>
-<ul>
-  {% for vehiculo in vehiculos %}
-    <li class="elementoLista">
-      {{vehiculo.nombre}}<a class="enlaceLista" href="{{asset("/modificarVehiculo/id="~vehiculo.id)}}">Modificar</a>
-      <a class="enlaceLista" href="{{asset("/eliminarVehiculo/id="~vehiculo.id)}}">Eliminar</a>
-    </li>
-  {% endfor %}
-</ul>
+
+{% if vehiculos|length > 0 %}
+  <ul>
+    {% for vehiculo in vehiculos %}
+      <li class="elementoLista">
+        {{vehiculo.nombre}}<a class="enlaceLista" href="{{asset("/modificarVehiculo/id="~vehiculo.id)}}">Modificar</a>
+        <a class="enlaceLista" href="{{asset("/eliminarVehiculo/id="~vehiculo.id)}}">Eliminar</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>-No hay ningún vehículo en la base de datos-</p>
+{% endif %}
+
 {% endblock %}
