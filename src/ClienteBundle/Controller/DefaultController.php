@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use ClienteBundle\Form\UserType;
 use ClienteBundle\Entity\User;
 
@@ -47,10 +48,20 @@ class DefaultController extends Controller
   }
 
   /**
-   * @Route("/login", name="login")
+   * @Route("/usuarios/login", name="login")
    */
-  public function loginAction()
+  public function loginAction(Request $request)
   {
-      return $this->render('ProyectoBundle:Default:login.html.twig');
+      $authenticationUtils = $this->get('security.authentication_utils');
+      // get the login error if there is one
+      $error = $authUtils->getLastAuthenticationError();
+
+      // last username entered by the user
+      $lastUsername = $authUtils->getLastUsername();
+
+      return $this->render('security/login.html.twig', array(
+          'last_username' => $lastUsername,
+          'error'         => $error,
+      ));
   }
 }

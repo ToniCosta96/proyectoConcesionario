@@ -15,6 +15,15 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        admin:
+            pattern: ^/admin
+            http_basic: ~
+        usuarios:
+            pattern: ^/usuarios
+            anonymous: ~
+            form_login:
+                login_path: /usuarios/login
+                check_path: /usuarios/login
         main:
             anonymous: ~
             # activate different ways to authenticate
