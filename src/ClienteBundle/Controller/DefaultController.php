@@ -54,12 +54,12 @@ class DefaultController extends Controller
   {
       $authenticationUtils = $this->get('security.authentication_utils');
       // get the login error if there is one
-      $error = $authUtils->getLastAuthenticationError();
+      $error = $authenticationUtils->getLastAuthenticationError();
 
       // last username entered by the user
-      $lastUsername = $authUtils->getLastUsername();
+      $lastUsername = $authenticationUtils->getLastUsername();
 
-      return $this->render('security/login.html.twig', array(
+      return $this->render('ClienteBundle:Default:login.html.twig', array(
           'last_username' => $lastUsername,
           'error'         => $error,
       ));

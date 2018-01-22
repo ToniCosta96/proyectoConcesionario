@@ -22,7 +22,7 @@ class VehiculoController extends Controller
     }
 
     /**
-     * @Route("/crearVehiculo", name="crear_vehiculo")
+     * @Route("/admin/crearVehiculo", name="crear_vehiculo")
      */
     public function crearVehiculoAction(Request $request)
     {
@@ -46,7 +46,7 @@ class VehiculoController extends Controller
     }
 
     /**
-     * @Route("/modificarVehiculo/id={id}", name="modificar_vehiculo")
+     * @Route("/admin/modificarVehiculo/id={id}", name="modificar_vehiculo")
      */
     public function modificarVehiculoAction(Request $request, $id)
     {
@@ -80,7 +80,7 @@ class VehiculoController extends Controller
     }
 
     /**
-     * @Route("/eliminarVehiculo/id={id}", name="eliminar_vehiculo")
+     * @Route("/admin/eliminarVehiculo/id={id}", name="eliminar_vehiculo")
      */
     public function eliminarVehiculoAction($id)
     {
