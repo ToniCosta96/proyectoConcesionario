@@ -84,6 +84,13 @@ class Vehiculo
      */
     private $enVenta;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="usuario_id", type="integer")
+     */
+    private $usuarioId;
+
 
     /**
      * Get id

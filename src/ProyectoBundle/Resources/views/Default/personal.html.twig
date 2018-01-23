@@ -9,16 +9,16 @@
 <h3 class="h3_vehiculo">Lista de vehículos:</h3>
 
 {% if vehiculos|length > 0 %}
-  <ul>
-    {% for vehiculo in vehiculos %}
-      <li class="elementoLista">
-        {{vehiculo.nombre}}<a class="enlaceLista" href="{{asset("/admin/modificarVehiculo/id="~vehiculo.id)}}">Modificar</a>
-        <a class="enlaceLista" href="{{asset("/admin/eliminarVehiculo/id="~vehiculo.id)}}">Eliminar</a>
-      </li>
-    {% endfor %}
-  </ul>
+<ul>
+  {% for vehiculo in vehiculos %}
+    <li class="elementoLista">
+      {{vehiculo.nombre}}<a class="enlaceLista" href="{{asset("/admin/modificarVehiculo/id="~vehiculo.id)}}">Modificar</a>
+      <a class="enlaceLista" href="{{asset("/admin/eliminarVehiculo/id="~vehiculo.id)}}">Eliminar</a>
+    </li>
+  {% endfor %}
+</ul>
 {% else %}
-  <p>-No hay ningún vehículo en la base de datos-</p>
+<p>-No hay ningún vehículo en la base de datos-</p>
 {% endif %}
 
 {% endblock %}
