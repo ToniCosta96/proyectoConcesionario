@@ -53,11 +53,12 @@ class ApiController extends Controller
 
         $jsonContent = $serializer->serialize($vehiculo, 'json');
 
-        $response = new Response(
-            $jsonContent,
-            Response::HTTP_OK,
-            array('content-type' => 'json')
-        );
+        $response = JsonResponse::fromJsonString($jsonContent);
+        // $response = new Response(
+        //     $jsonContent,
+        //     Response::HTTP_OK,
+        //     array('content-type' => 'json')
+        // );
 
         return $response;
     }

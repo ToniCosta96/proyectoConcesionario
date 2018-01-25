@@ -30,6 +30,9 @@ class DefaultController extends Controller
           $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPlainPassword());
           $user->setPassword($password);
 
+          // 3.1) Guardar rol del usuario
+          $user->setRoles(["ROLE_USER"]);
+
           // 4) save the User!
           $em = $this->getDoctrine()->getManager();
           $em->persist($user);

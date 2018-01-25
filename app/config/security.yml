@@ -16,6 +16,10 @@ security:
                     user:
                         password: 1234
                         roles: 'ROLE_USER'
+        my_db_provider:
+            entity:
+                class: ClienteBundle:User
+                property: username
 
     access_control:
         - {path: ^/usuarios/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
@@ -29,23 +33,30 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        admin:
-            pattern: ^/admin
-            provider: in_memory
-            http_basic: ~
-        usuarios:
+        # admin:
+        #     pattern: ^/admin
+        #     provider: in_memory
+        #     http_basic: ~
+        # usuarios:
+        #     pattern: ^/
+        #     anonymous: ~
+        #     provider: in_memory
+        #     form_login:
+        #         login_path: /usuarios/login
+        #         check_path: /usuarios/login
+        #     logout:
+        #         path: /usuarios/logout
+        #         target: /
+        main:
             pattern: ^/
+            provider: my_db_provider
             anonymous: ~
-            provider: in_memory
             form_login:
                 login_path: /usuarios/login
                 check_path: /usuarios/login
             logout:
                 path: /usuarios/logout
                 target: /
-        main:
-            pattern: ^/
-            anonymous: ~
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
