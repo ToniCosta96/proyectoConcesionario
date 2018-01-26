@@ -2,6 +2,8 @@
 
 namespace ProyectoBundle\Entity;
 
+use Symfony\Component\HttpFoundation\Request;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -87,7 +89,7 @@ class Vehiculo
     /**
      * @var int
      *
-     * @ORM\Column(name="usuario_id", type="integer")
+     * @ORM\Column(name="usuario_id", type="integer", nullable=true)
      */
     private $usuarioId;
 
@@ -340,5 +342,20 @@ class Vehiculo
     public function getUsuarioId()
     {
         return $this->usuarioId;
+    }
+
+    public function setParameters(Request $request){
+        $this->tipo = $request->request->get("nombre");
+        $this->tipo = $request->request->get("descripcion_corta");
+        $this->tipo = $request->request->get("descripcion");
+        $this->tipo = $request->request->get("imagen");
+        $this->tipo = $request->request->get("precio");
+        $this->tipo = $request->request->get("fecha_adquisicion");
+        $this->tipo = $request->request->get("detalles");
+        $this->tipo = $request->request->get("kilometros");
+        $this->tipo = $request->request->get("en_venta");
+        $this->tipo = $request->request->get("usuario_id");
+
+        return $this;
     }
 }

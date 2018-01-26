@@ -4,6 +4,7 @@ namespace ProyectoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +18,8 @@ use ProyectoBundle\Entity\Vehiculo;
 class ApiController extends Controller
 {
     /**
-     * @Route("/api/vehiculo/id={id}", name="api_vehiculo_id", requirements={"id"="\d+"}, methods={"GET","HEAD"})
+     * @Route("/api/vehiculo/id={id}", name="api_vehiculo_id", requirements={"id"="\d+"})
+     * @Method({"GET","HEAD"})
      */
     public function apiVehiculoAction($id)
     {
@@ -40,7 +42,8 @@ class ApiController extends Controller
     }
 
     /**
-     * @Route("/api/vehiculos", name="api_vehiculos", requirements={"id"="\d+"}, methods={"GET","HEAD"})
+     * @Route("/api/vehiculos", name="api_vehiculos", requirements={"id"="\d+"})
+     * @Method({"GET","HEAD"})
      */
     public function apiVehiculosAction()
     {
@@ -60,6 +63,29 @@ class ApiController extends Controller
         //     array('content-type' => 'json')
         // );
 
+        return $response;
+    }
+
+    /**
+     * @Route("/api/insertarVehiculo", name="api_insertar_vehiculo")
+     * @Method({"GET","POST"})
+     */
+    public function apiInsertarVehiculoAction(Request $request)
+    {
+        $vehiculo = new Vehiculo();
+
+        $vehiculo->setParameters($request);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($vehiculo);
+        $em->flush();
+
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonContent = $serializer->serialize($vehiculo, 'json');
+        $response = JsonResponse::fromJsonString($jsonContent);
         return $response;
     }
 }
