@@ -68,12 +68,12 @@ class ApiController extends Controller
 
     /**
      * @Route("/api/insertarVehiculo", name="api_insertar_vehiculo")
-     * @Method({"GET","POST"})
+     * @Method({"POST"})
      */
     public function apiInsertarVehiculoAction(Request $request)
     {
         $vehiculo = new Vehiculo();
-
+        
         $vehiculo->setParameters($request);
 
         $em = $this->getDoctrine()->getManager();

@@ -68,7 +68,7 @@ class Vehiculo
     /**
      * @var string
      *
-     * @ORM\Column(name="detalles", type="string", length=800)
+     * @ORM\Column(name="detalles", type="string", length=800, nullable=true)
      */
     private $detalles;
 
@@ -345,16 +345,16 @@ class Vehiculo
     }
 
     public function setParameters(Request $request){
-        $this->tipo = $request->request->get("nombre");
-        $this->tipo = $request->request->get("descripcion_corta");
-        $this->tipo = $request->request->get("descripcion");
-        $this->tipo = $request->request->get("imagen");
-        $this->tipo = $request->request->get("precio");
-        $this->tipo = $request->request->get("fecha_adquisicion");
-        $this->tipo = $request->request->get("detalles");
-        $this->tipo = $request->request->get("kilometros");
-        $this->tipo = $request->request->get("en_venta");
-        $this->tipo = $request->request->get("usuario_id");
+        $this->nombre = $request->request->get("nombre");
+        $this->descripcionCorta = $request->request->get("descripcionCorta");
+        $this->descripcion = $request->request->get("descripcion");
+        $this->imagen = $request->request->get("imagen");
+        $this->precio = $request->request->get("precio");
+        $this->fechaAdquisicion = new \DateTime($request->request->get("fechaAdquisicion"));
+        $this->detalles = $request->request->get("detalles");
+        $this->kilometros = $request->request->get("kilometros");
+        $this->enVenta = $request->request->get("enVenta");
+        $this->usuarioId = $request->request->get("usuarioId");
 
         return $this;
     }
