@@ -25,6 +25,15 @@ class ApiController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
         $vehiculo = $repository->find($id);
+        if (!$vehiculo) {
+            // (Código para añadir respuestas más complejas->) json_encode(array("error" => "No se ha encontrado ningún vehículo con la id ".$id))
+            return new Response(
+                '{"error":"No se ha encontrado ningún vehículo con la id '.$id.'"}',
+                Response::HTTP_NOT_FOUND,
+                array('content-type' => 'application/json')
+            );
+        }
+
         $response = new JsonResponse(array(
           'id' => $vehiculo->getId(),
           'nombre' => $vehiculo->getNombre(),
@@ -62,7 +71,7 @@ class ApiController extends Controller
         /*$response = new Response(
             $jsonContent,
             Response::HTTP_OK,
-            array('content-type' => 'json')
+            array('content-type' => 'application/json')
         );*/
 
         return $response;
@@ -137,8 +146,10 @@ class ApiController extends Controller
         $em = $this->getDoctrine()->getManager();
         $vehiculo = $em->getRepository(Vehiculo::class)->find($id);
         if (!$vehiculo) {
-            throw $this->createNotFoundException(
-                'Ningún vehiculo coincide con la id '.$id
+            return new Response(
+                '{"error":"No se ha encontrado ningún vehículo con la id '.$id.'"}',
+                Response::HTTP_NOT_FOUND,
+                array('content-type' => 'application/json')
             );
         }
         // Eliminar vehiculo de la base de datos
@@ -146,12 +157,18 @@ class ApiController extends Controller
         $em->flush();
 
         // Serializer
-        $encoders = array(new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-        // Se crea el json de vehiculo y se introduce en el response
-        $jsonContent = $serializer->serialize($vehiculo, 'json');
-        $response = JsonResponse::fromJsonString($jsonContent);
+        // $encoders = array(new JsonEncoder());
+        // $normalizers = array(new ObjectNormalizer());
+        // $serializer = new Serializer($normalizers, $encoders);
+        // // Se crea el json de vehiculo y se introduce en el response
+        // $jsonContent = $serializer->serialize($vehiculo, 'json');
+        // $response = JsonResponse::fromJsonString($jsonContent);
+
+        $response = new Response(
+            "",
+            Response::HTTP_OK,
+            array('content-type' => 'application/json')
+        );
 
         return $response;
     }
