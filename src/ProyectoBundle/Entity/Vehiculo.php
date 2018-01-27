@@ -358,4 +358,19 @@ class Vehiculo
 
         return $this;
     }
+
+    public function setParametersFromJson($data){
+        $this->nombre = $data->{'nombre'};
+        $this->descripcionCorta = $data->{'descripcionCorta'};
+        $this->descripcion = $data->{'descripcion'};
+        $this->imagen = $data->{'imagen'};
+        $this->precio = $data->{'precio'};
+        $this->fechaAdquisicion = new \DateTime($data->{'fechaAdquisicion'});
+        $this->detalles = $data->{'detalles'};
+        $this->kilometros = $data->{'kilometros'};
+        $this->enVenta = $data->{'enVenta'};
+        //$this->usuarioId = $data->{'detalles'};
+
+        return $this;
+    }
 }

@@ -48,20 +48,22 @@ class ApiController extends Controller
     public function apiVehiculosAction()
     {
         $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
-        $vehiculo = $repository->findAll();
+        $vehiculos = $repository->findAll();
 
+        // Serializer
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
 
-        $jsonContent = $serializer->serialize($vehiculo, 'json');
-
+        // Se crea el json de vehiculos
+        $jsonContent = $serializer->serialize($vehiculos, 'json');
+        // Se genera la respuesta incluyendo el json
         $response = JsonResponse::fromJsonString($jsonContent);
-        // $response = new Response(
-        //     $jsonContent,
-        //     Response::HTTP_OK,
-        //     array('content-type' => 'json')
-        // );
+        /*$response = new Response(
+            $jsonContent,
+            Response::HTTP_OK,
+            array('content-type' => 'json')
+        );*/
 
         return $response;
     }
@@ -73,19 +75,84 @@ class ApiController extends Controller
     public function apiInsertarVehiculoAction(Request $request)
     {
         $vehiculo = new Vehiculo();
-        
+
         $vehiculo->setParameters($request);
 
+        // Guardar nuevo vehiculo en la base de datos
         $em = $this->getDoctrine()->getManager();
         $em->persist($vehiculo);
         $em->flush();
 
+        // Serializer
         $encoders = array(new JsonEncoder());
         $normalizers = array(new ObjectNormalizer());
-
         $serializer = new Serializer($normalizers, $encoders);
+        // Se crea el json de vehiculo y se introduce en el response
         $jsonContent = $serializer->serialize($vehiculo, 'json');
         $response = JsonResponse::fromJsonString($jsonContent);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/api/modificarVehiculo/id={id}", name="api_modificar_vehiculo")
+     * @Method({"PUT"})
+     */
+    public function apiModificarVehiculoAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $vehiculo = $em->getRepository(Vehiculo::class)->find($id);
+        if (!$vehiculo) {
+            throw $this->createNotFoundException(
+                'Ningún vehiculo coincide con la id '.$id
+            );
+        }
+
+        // Llena vehiculo con los datos del json
+        $data = json_decode($request->getContent());
+        $vehiculo->setParametersFromJson($data);
+
+        // Guardar cambios en la base de datos
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($vehiculo);
+        $em->flush();
+
+        // Serializer
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        // Se crea el json de vehiculo y se introduce en el response
+        $jsonContent = $serializer->serialize($vehiculo, 'json');
+        $response = JsonResponse::fromJsonString($jsonContent);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/api/eliminarVehiculo/id={id}", name="api_eliminnar_vehiculo", requirements={"id": "\d+"})
+     * @Method({"DELETE"})
+     */
+    public function apiEliminarVehiculoAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $vehiculo = $em->getRepository(Vehiculo::class)->find($id);
+        if (!$vehiculo) {
+            throw $this->createNotFoundException(
+                'Ningún vehiculo coincide con la id '.$id
+            );
+        }
+        // Eliminar vehiculo de la base de datos
+        $em->remove($vehiculo);
+        $em->flush();
+
+        // Serializer
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
+        $serializer = new Serializer($normalizers, $encoders);
+        // Se crea el json de vehiculo y se introduce en el response
+        $jsonContent = $serializer->serialize($vehiculo, 'json');
+        $response = JsonResponse::fromJsonString($jsonContent);
+
         return $response;
     }
 }
