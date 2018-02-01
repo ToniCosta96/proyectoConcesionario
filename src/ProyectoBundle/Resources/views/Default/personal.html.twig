@@ -9,18 +9,29 @@
 {% if is_granted('ROLE_ADMIN') %}
 <p class="p_normal"><a class="enlaceNormal" href="{{asset("/admin/crearVehiculo")}}">Añadir vehiculo</a></p>
 <h3 class="h3_vehiculo">Lista de vehículos:</h3>
-  {% if vehiculos|length > 0 %}
-  <ul>
-    {% for vehiculo in vehiculos %}
-      <li class="elementoLista">
-        {{vehiculo.nombre}}<a class="enlaceLista" href="{{asset("/admin/modificarVehiculo/id="~vehiculo.id)}}">Modificar</a>
-        <a class="enlaceLista" href="{{asset("/admin/eliminarVehiculo/id="~vehiculo.id)}}">Eliminar</a>
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p>-No hay ningún vehículo en la base de datos-</p>
-  {% endif %}
+{% if vehiculos|length > 0 %}
+<ul>
+  {% for vehiculo in vehiculos %}
+    <li class="elementoLista">
+      {{vehiculo.nombre}}<a class="enlaceLista" href="{{asset("/admin/modificarVehiculo/id="~vehiculo.id)}}">Modificar</a>
+      <a class="enlaceLista" href="{{asset("/admin/eliminarVehiculo/id="~vehiculo.id)}}">Eliminar</a>
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>-No hay ningún vehículo en la base de datos-</p>
+{% endif %}
+
+<h1 class="h3_vehiculo">Lista de usuarios:</h1>
+<ul>
+  {% for usuario in usuarios %}
+    <li class="elementoLista">
+      {{usuario.username}}<a class="enlaceLista" href="{{asset("/usuarios/modificarUsuario/id="~usuario.id)}}">Modificar</a>
+      <a class="enlaceLista" href="{{asset("/usuarios/eliminarUsuario/id="~usuario.id)}}">Eliminar</a>
+    </li>
+  {% endfor %}
+</ul>
+
 {% endif %}
 
 {% endblock %}

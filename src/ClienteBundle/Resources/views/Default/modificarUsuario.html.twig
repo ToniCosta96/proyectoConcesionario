@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modificar usuario - Concesionario{% endblock %}
+
+{% block body01 %}
+<h1 class="h1_vehiculo">Modificar usuario</h1>
+<p>Modificar usuario {{usuario.username}}.</p>
+<p><strong>Id: </strong> {{usuario.id}}.</p>
+<br>
+{{ form_start(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.roles) }}
+    {{ form_row(form.guardar, { 'label': 'Guardar cambios' }) }}
+    {{ form_row(form.borrar) }}
+  {{ form_end(form) }}
+{% endblock %}

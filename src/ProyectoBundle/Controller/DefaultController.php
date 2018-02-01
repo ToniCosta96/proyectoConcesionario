@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use ProyectoBundle\Entity\Vehiculo;
+use ClienteBundle\Entity\User;
 
 class DefaultController extends Controller
 {
@@ -34,6 +35,7 @@ class DefaultController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository(Vehiculo::class);
         $vehiculos = $repository->findAll();
-        return $this->render('ProyectoBundle:Default:personal.html.twig', array('vehiculos'=>$vehiculos));
+        $usuarios = $this->getDoctrine()->getRepository(User::class)->findAll();
+        return $this->render('ProyectoBundle:Default:personal.html.twig', array('vehiculos'=>$vehiculos, 'usuarios'=>$usuarios));
     }
 }
